@@ -1,3 +1,5 @@
+package HibernateDDL2.model;
+
 public class ClienteEntregador extends Cliente{
 
     private int idCliente;

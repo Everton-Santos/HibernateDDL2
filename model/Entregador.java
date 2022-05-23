@@ -1,33 +1,43 @@
-public class Entregador extends Funcionario{
+package HibernateDDL2.model;
 
-    private String CNH;
-    private String categoriaCNH;
-    private int clienteId;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 
-    public String getCNH() {
-        return CNH;
-    }
+@Entity
+@Table(name = "entregador")
+public class Entregador extends Funcionario {
+  @Column(name = "numero", length = 10)
+  @NotNull
+  private String numero;
 
-    public void setCNH(String CNH) {
-        this.CNH = CNH;
-    }
+  @Column(name = "cnh", length = 10)
+  @NotNull
+  private String cnh;
 
-    public String getcategoriaCNH() {
-        return categoriaCNH;
-    }
+  public String getNumero() {
+    return this.numero;
+  }
 
-    public void setcategoriaCNH(String categoriaCNH) {
-        this.categoriaCNH = categoriaCNH;
-    }
+  public void setNumero(String numero) {
+    this.numero = numero;
+  }
 
-    public int getclienteId() {
-        return clienteId;
-    }
+  public String getCnh() {
+    return this.cnh;
+  }
 
-    public void setclienteId(int clienteId) {
-        this.clienteId = clienteId;
-    }
+  public void setCnh(String cnh) {
+    this.cnh = cnh;
+  }
 
+  @Override
+  public String toString() {
+    return "{" +
+        " numero='" + getNumero() + "'" +
+        ", cnh='" + getCnh() + "'" +
+        "}";
+  }
 
-
-} 
+}

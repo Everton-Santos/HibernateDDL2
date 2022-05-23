@@ -1,50 +1,96 @@
-public class Cliente extends Entregador{
+package HibernateDDL2.model;
 
-    private int id;
-    private String telefone;
-    private String contato;
-    private String email;
-    private String CPF;
-    private String nome;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 
-    public int getId() {
-        return id;
-    }
+@Entity
+@Table(name = "cliente")
+public class Cliente {
+  @Id
+  @Column(name = "id_cliente")
+  @NotNull
+  private int id;
 
-    public void setId(int id) {
-        this.id = id;
-    }
+  @Column(name = "cpf", length = 15)
+  @NotNull
+  private String cpf;
 
-    public String gettelefone() {
-        return telefone;
-    }
+  @Column(name = "nome", length = 100)
+  @NotNull
+  private String nome;
 
-    public void settelefone(String telefone) {
-        this.telefone = telefone;
-    }
+  @Column(name = "celular", length = 15)
+  @NotNull
+  private String celular;
 
-    public String getcontato() {
-        return contato;
-    }
+  @Column(name = "email", length = 100)
+  @NotNull
+  private String email;
 
-    public void setcontato(String contato) {
-        this.contato = contato;
-    }
+  @Column(name = "pronome", length = 30)
+  @NotNull
+  private String pronome;
 
-    public String getemail() {
-        return email;
-    }
+  public int getId() {
+    return this.id;
+  }
 
-    public void setemail(String email) {
-        this.email = email;
-    }
+  public void setId(int id) {
+    this.id = id;
+  }
 
-    public String getnome() {
-        return nome;
-    }
+  public String getCpf() {
+    return this.cpf;
+  }
 
-    public void setnome(String nome) {
-        this.nome = nome;
-    }
+  public void setCpf(String cpf) {
+    this.cpf = cpf;
+  }
 
-} 
+  public String getNome() {
+    return this.nome;
+  }
+
+  public void setNome(String nome) {
+    this.nome = nome;
+  }
+
+  public String getCelular() {
+    return this.celular;
+  }
+
+  public void setCelular(String celular) {
+    this.celular = celular;
+  }
+
+  public String getEmail() {
+    return this.email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public String getPronome() {
+    return this.pronome;
+  }
+
+  public void setPronome(String pronome) {
+    this.pronome = pronome;
+  }
+
+  @Override
+  public String toString() {
+    return "{" +
+        " id='" + getId() + "'" +
+        ", cpf='" + getCpf() + "'" +
+        ", nome='" + getNome() + "'" +
+        ", celular='" + getCelular() + "'" +
+        ", email='" + getEmail() + "'" +
+        ", pronome='" + getPronome() + "'" +
+        "}";
+  }
+}

@@ -1,41 +1,88 @@
+package HibernateDDL2.model;
+
+import java.time.LocalDate;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+
+@Entity
+@Table(name = "funcionario")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Funcionario {
+  @Id
+  @Column(name = "matricula")
+  @NotNull
+  private int matricula;
 
-        private int id;
-        private String nome;
-        private date data;
-        private double salario;
+  @Column(name = "nome", length = 100)
+  @NotNull
+  private String nome;
 
-        public int getId() {
-            return id;
-        }
+  @Column(name = "dtnasc")
+  @NotNull
+  private LocalDate dtnasc;
 
-        public void setId(int id) {
-            this.id = id;
-        }
+  @Column(name = "salario", length = 10)
+  @NotNull
+  private int salario;
 
-        public String getNome() {
-            return nome;
-        }
+  @Column(name = "celular", length = 15)
+  private String celular;
 
-        public void setNome(String nome) {
-            this.nome = nome;
-        }
+  public int getMatricula() {
+    return this.matricula;
+  }
 
-        public date getData() {
-            return data;
-        }
+  public void setMatricula(int matricula) {
+    this.matricula = matricula;
+  }
 
-        public void setData(date data) {
-            this.data = data;
-        }
+  public String getNome() {
+    return this.nome;
+  }
 
-        public double getSalario() {
-            return salario;
-        }
+  public void setNome(String nome) {
+    this.nome = nome;
+  }
 
-        public void setSalario(Double salario) {
-            this.salario = salario;
-        }
-    
-} 
+  public LocalDate getDtnasc() {
+    return this.dtnasc;
+  }
 
+  public void setDtnasc(LocalDate dtnasc) {
+    this.dtnasc = dtnasc;
+  }
+
+  public int getSalario() {
+    return this.salario;
+  }
+
+  public void setSalario(int salario) {
+    this.salario = salario;
+  }
+
+  public String getCelular() {
+    return this.celular;
+  }
+
+  public void setCelular(String celular) {
+    this.celular = celular;
+  }
+
+  @Override
+  public String toString() {
+    return "{" +
+        " matricula='" + getMatricula() + "'" +
+        ", nome='" + getNome() + "'" +
+        ", dtnasc='" + getDtnasc() + "'" +
+        ", salario='" + getSalario() + "'" +
+        ", celular='" + getCelular() + "'" +
+        "}";
+  }
+
+}
